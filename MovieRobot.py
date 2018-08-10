@@ -19,10 +19,13 @@ def getlink(url):
 	return link
 
 movie = input("输入电影名称：")
+print('请稍等，正在搜索中......')
 #将汉字转化为URL编码，避免字符报错
 movie = urllib.parse.quote(movie)
 url = "http://ifkdy.com/?q="+movie
 url = str(url)
 linklist = getlink(url)
+print('----------------------------Result-----------------------------')
 for link in linklist:
-	print(link[0:])
+	print("观看地址："+link[0:])
+print('PS：任一观看地址都可以观看哦～')
