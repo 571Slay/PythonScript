@@ -3,9 +3,10 @@
 没有什么技术难度，但是都比较经典,
 适合新手研究以及记录笔记
 
-2018.8.10  By.MecuryYe
+PS:所有PythonScript均按照Python3来编写
+2018.8.10          By.MecuryYe
 
-所有PythonScript均按照Python3来编写
+------------------脚本说明----------------
 
 ip.py:一款IP信息查询的脚本，主要知识点在于对于API返回的json数据的处理上
 
