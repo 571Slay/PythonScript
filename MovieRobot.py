@@ -13,8 +13,18 @@ def getlink(url):
 	file = urllib.request.urlopen(url)
 	data = str(file.read())
 	#构造正则表达式来搜索内容
-	pat = '<a href="(http://goudidiao.com.*?)"'
-	link = re.compile(pat).findall(data)
+	pat1 = '<a href="(http://goudidiao.com.*?)"'
+	pat2 = '<a href="(http://www.pniao.com.*?)"'
+	pat3 = '<a href="(http://www.languang.co.*?)"'
+	pat4 = '<a href="(http://www.xunyingwang.com.*?)"'
+	pat5 = '<a href="(http://www.dygod.net.*?)"'
+	#这里实在不会写了，凑合看吧！
+	link1 = re.compile(pat1).findall(data) 	
+	link2 = re.compile(pat2).findall(data) 	
+	link3 = re.compile(pat3).findall(data) 	
+	link4 = re.compile(pat4).findall(data) 	
+	link5 = re.compile(pat5).findall(data)
+	link = link1+link2+link3+link4+link5
 	link = list(set(link))
 	return link
 
