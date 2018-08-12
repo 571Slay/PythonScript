@@ -2,7 +2,7 @@
 import os
 import re
 import urllib.request
-import bs4.BeautifulSoup
+from bs4 import BeautifulSoup
 
 #设置代理信息
 headers = ('User-Agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36')
@@ -30,7 +30,8 @@ def getbook(link):
 	title = soup.find('h1')
 	value = soup.find('div', id="content")
 	#使用list.get_text()函数获取文本
-	book = title.get_text()+value.get_text()
+	book = title.get_text()+value.get_text()	
+	print(title.get_text()+"下载完成")
 	return book
 
 #从用户处获取基本变量
