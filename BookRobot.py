@@ -4,15 +4,8 @@ import re
 import urllib.request
 from bs4 import BeautifulSoup
 
-#设置代理信息
-headers = ('User-Agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36')
-opener = urllib.request.build_opener()
-opener.addheaders = [headers]
-urllib.request.install_opener(opener)
-
 #定义核心函数
 def getlink(url):
-	#模拟浏览器发出请求
 	file = urllib.request.urlopen(url)
 	data = str(file.read())
 	#构造正则表达式来匹配章节链接
@@ -24,14 +17,19 @@ def getlink(url):
 	return link
 	
 def getbook(link):
+	#设置代理信息
+	headers = ('User-Agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36')
+	opener = urllib.request.build_opener()
+	opener.addheaders = [headers]
+	urllib.request.install_opener(opener)
 	data = urllib.request.urlopen(link).read()
 	data = data.decode('utf-8')
 	soup = BeautifulSoup(data, 'html.parser')
 	title = soup.find('h1')
 	value = soup.find('div', id="content")
 	#使用list.get_text()函数获取文本
-	book = title.get_text()+value.get_text()	
-	print(title.get_text()+"下载完成")
+	book = title.get_text()+value.get_text()
+	print(title.get_text()+" 下载完成...")
 	return book
 
 #从用户处获取基本变量
